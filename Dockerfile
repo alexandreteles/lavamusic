@@ -40,7 +40,7 @@ RUN npm install --only=production
 RUN apt-get update && \
     apt-get install -y openssl && \
     apt-get clean && \
-    apt-get apt-get autoremove --yes && \
+    apt-get autoremove --yes && \
     rm -rf /var/lib/apt/lists/*
 
 # Run as non-root user
