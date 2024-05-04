@@ -36,6 +36,13 @@ COPY --from=builder /opt/lavamusic/prisma ./prisma
 COPY package*.json ./
 RUN npm install --only=production
 
+# Install OpenSSL
+RUN apt-get update && \
+    apt-get install -y openssl && \
+    apt-get clean && \
+    apt-get apt-get autoremove --yes && \
+    rm -rf /var/lib/apt/lists/*
+
 # Run as non-root user
 RUN addgroup --gid 322 --system lavamusic && \
     adduser --uid 322 --system lavamusic
